@@ -4,15 +4,22 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@refinedev/cli": "^2.5.1",
-    "@refinedev/core": "^4.5.8",
-    "@refinedev/inferencer": "^4.0.0",
+    "@emotion/react": "^11.11.1",
+    "@mantine/core": "^6.0.13",
+    "@mantine/dates": "^6.0.13",
+    "@mantine/form": "^6.0.13",
+    "@mantine/hooks": "^6.0.13",
+    "@mantine/notifications": "^6.0.13",
+    "@refinedev/altogic": "^4.1.0",
+    "@refinedev/cli": "^2.7.0",
+    "@refinedev/core": "^4.22.0",
     "@refinedev/kbar": "^1.1.0",
+    "@refinedev/mantine": "^2.18.0",
+    "@refinedev/react-router-v6": "^4.3.2",
+    "dayjs": "^1.11.8",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-router-dom": "^6.8.1",
-    "@refinedev/simple-rest": "^4.0.0",
-    "@refinedev/react-router-v6": "^4.1.0"
+    "react-router-dom": "^6.8.1"
   },
   "devDependencies": {
     "@types/node": "^18.16.2",
