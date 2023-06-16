@@ -6,10 +6,11 @@ import routerBindings, {
   UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
 import dataProvider from "@refinedev/altogic";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { MantineProvider } from "@mantine/core";
 import { DatesProvider } from "@mantine/dates";
 import { Notifications } from "@mantine/notifications";
+import { Layout } from "./components/layout";
 
 function App() {
   return (
@@ -33,7 +34,15 @@ function App() {
               }}
             >
               <Routes>
-                <Route index element={<WelcomePage />} />
+                <Route
+                  element={
+                    <Layout>
+                      <Outlet />
+                    </Layout>
+                  }
+                >
+                  <Route index element={<WelcomePage />} />
+                </Route>
               </Routes>
               <RefineKbar />
               <UnsavedChangesNotifier />
