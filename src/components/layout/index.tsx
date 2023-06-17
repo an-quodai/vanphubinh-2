@@ -18,7 +18,7 @@ export const Layout: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   return (
     <div className="layout">
       <AppShell
-        padding="0px"
+        padding="lg"
         styles={{
           root: {
             header: {
@@ -28,7 +28,8 @@ export const Layout: React.FC<PropsWithChildren<{}>> = ({ children }) => {
                 "0 0.7px 1.4px rgba(0,0,0,.07), 0 1.9px 4px rgba(0,0,0,.05), 0 4.5px 10px rgba(0,0,0,.05)",
             },
             nav: {
-              background: "rgb(247, 248, 252)",
+              background: "#25282f",
+              // background: "rgb(247, 248, 252)",
             },
           },
         }}
@@ -45,25 +46,26 @@ export const Layout: React.FC<PropsWithChildren<{}>> = ({ children }) => {
           </Navbar>
         }
         header={
-          <Header height={{ base: 50, md: 50 }} p="md">
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                height: "100%",
-              }}
-            >
-              <MediaQuery largerThan="sm" styles={{ display: "none" }}>
-                <Burger
-                  opened={opened}
-                  onClick={() => setOpened((o) => !o)}
-                  size="sm"
-                  color={theme.colors.gray[6]}
-                  mr="xl"
-                />
-              </MediaQuery>
-            </div>
-          </Header>
+          <></>
+          // <Header height={{ base: 50, md: 50 }} p="md">
+          //   <div
+          //     style={{
+          //       display: "flex",
+          //       alignItems: "center",
+          //       height: "100%",
+          //     }}
+          //   >
+          //     <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+          //       <Burger
+          //         opened={opened}
+          //         onClick={() => setOpened((o) => !o)}
+          //         size="sm"
+          //         color={theme.colors.gray[6]}
+          //         mr="xl"
+          //       />
+          //     </MediaQuery>
+          //   </div>
+          // </Header>
         }
       >
         {/* <Breadcrumb /> */}

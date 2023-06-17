@@ -1,4 +1,4 @@
-import { Refine, WelcomePage } from "@refinedev/core";
+import { Refine } from "@refinedev/core";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
 import routerBindings, {
@@ -11,6 +11,7 @@ import { MantineProvider } from "@mantine/core";
 import { DatesProvider } from "@mantine/dates";
 import { Notifications } from "@mantine/notifications";
 import { Layout } from "./components/layout";
+import { ItemList } from "src/pages/items";
 
 function App() {
   return (
@@ -41,7 +42,7 @@ function App() {
                     </Layout>
                   }
                 >
-                  <Route index element={<WelcomePage />} />
+                  <Route index element={<ItemList />} />
                 </Route>
               </Routes>
               <RefineKbar />
