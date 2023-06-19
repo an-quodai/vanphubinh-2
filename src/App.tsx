@@ -5,7 +5,7 @@ import routerBindings, {
   DocumentTitleHandler,
   UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
-import dataProvider from "@refinedev/simple-rest";
+import { dataProvider } from "src/providers";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { MantineProvider } from "@mantine/core";
 import { DatesProvider } from "@mantine/dates";
@@ -27,7 +27,7 @@ function App() {
           <Notifications position="top-right" zIndex={2077} />
           <DatesProvider settings={{ locale: "vi" }}>
             <Refine
-              dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
+              dataProvider={dataProvider("http://127.0.0.1:3333/api")}
               routerProvider={routerBindings}
               options={{
                 syncWithLocation: true,

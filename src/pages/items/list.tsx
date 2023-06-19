@@ -1,18 +1,10 @@
 import { Page } from "src/components/page";
-import {
-  MantineReactTable,
-  MRT_ColumnDef,
-  MRT_GlobalFilterTextInput,
-  MRT_ToggleFiltersButton,
-  MRT_ShowHideColumnsButton,
-  MRT_ToggleGlobalFilterButton,
-} from "mantine-react-table";
+import { MRT_ColumnDef } from "mantine-react-table";
 import { useMemo, useState } from "react";
-import { Box, Center, Flex, Loader } from "@mantine/core";
-import { MRT_ToggleDensePaddingButton } from "mantine-react-table";
+import { Center, Loader } from "@mantine/core";
 import { Table } from "src/components/table";
 // import { NewItemForm } from "src/components/item";
-import { HttpError, useList, useTable } from "@refinedev/core";
+import { HttpError, useList } from "@refinedev/core";
 
 interface IItem {
   name: string;
@@ -31,7 +23,7 @@ export const ItemList = () => {
     pageIndex: 0,
     pageSize: 30,
   });
-  const { data, isLoading } = useList<IItem, HttpError>({
+  const { data, isLoading, isRefetching } = useList<IItem, HttpError>({
     resource: "items",
     pagination: {
       current: pagination.pageIndex + 1,
@@ -39,8 +31,8 @@ export const ItemList = () => {
     },
   });
   const items = data?.data ?? [];
-
   const total = data?.meta?.total;
+
   const columns = useMemo<MRT_ColumnDef[]>(
     () => [
       {
@@ -77,16 +69,17 @@ export const ItemList = () => {
 
   return (
     <Page
-    // createButtonProps={{
-    //   onClick: openNewItemModal,
-    // }}
+      createButtonProps={{
+        // onClick: openNewItemModal,
+        disabled: isLoading || isRefetching,
+      }}
     >
-      {isLoading && (
+      {(isLoading || isRefetching) && (
         <Center h="100%">
           <Loader />
         </Center>
       )}
-      {!isLoading && (
+      {!isLoading && !isRefetching && (
         <Table
           columns={columns}
           data={items}
