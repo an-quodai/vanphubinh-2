@@ -15,6 +15,8 @@ export const Table = <TData extends Record<string, any> = {}>(
   return (
     <MantineReactTable
       {...props}
+      enableRowNumbers
+      enableRowSelection
       localization={MRT_Localization_VI}
       enableDensityToggle={false}
       enableFullScreenToggle={false}
@@ -59,14 +61,23 @@ export const Table = <TData extends Record<string, any> = {}>(
       mantineTableContainerProps={{
         sx: {
           height: "100%",
-          maxHeight: "calc(100vh - 12em)",
+          maxHeight: "calc(100vh - 13.5em)",
           flex: "1 1 auto",
+          marginTop: "1rem",
+          border: "1px solid #dddddd",
+          borderRadius: "0.25rem",
+        },
+      }}
+      mantineTableHeadRowProps={{
+        sx: {
+          backgroundColor: "#F1F3F5",
         },
       }}
       mantineTableHeadCellProps={{
         sx: {
           "& .mantine-TableHeadCell-Content": {
             justifyContent: "space-between",
+            color: "black",
           },
         },
       }}

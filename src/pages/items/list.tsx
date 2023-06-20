@@ -21,7 +21,7 @@ interface IItem {
 export const ItemList = () => {
   const [pagination, setPagination] = useState({
     pageIndex: 0,
-    pageSize: 30,
+    pageSize: 20,
   });
   const { data, isLoading, isRefetching } = useList<IItem, HttpError>({
     resource: "items",
@@ -69,28 +69,23 @@ export const ItemList = () => {
 
   return (
     <Page
-      createButtonProps={{
-        // onClick: openNewItemModal,
-        disabled: isLoading || isRefetching,
-      }}
+      createButtonProps={
+        {
+          // onClick: openNewItemModal,
+        }
+      }
     >
-      {(isLoading || isRefetching) && (
-        <Center h="100%">
-          <Loader />
-        </Center>
-      )}
-      {!isLoading && !isRefetching && (
-        <Table
-          columns={columns}
-          data={items}
-          manualPagination
-          rowCount={total}
-          state={{
-            pagination,
-          }}
-          onPaginationChange={setPagination}
-        />
-      )}
+      <Table
+        columns={columns}
+        data={items}
+        manualPagination
+        rowCount={total}
+        state={{
+          pagination,
+          isLoading: isRefetching || isLoading,
+        }}
+        onPaginationChange={setPagination}
+      />
     </Page>
   );
 };

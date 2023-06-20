@@ -28,8 +28,7 @@ export const Layout: React.FC<PropsWithChildren<{}>> = ({ children }) => {
                 "0 0.7px 1.4px rgba(0,0,0,.07), 0 1.9px 4px rgba(0,0,0,.05), 0 4.5px 10px rgba(0,0,0,.05)",
             },
             nav: {
-              background: "#25282f",
-              // background: "rgb(247, 248, 252)",
+              background: theme.black,
             },
           },
         }}
@@ -40,7 +39,7 @@ export const Layout: React.FC<PropsWithChildren<{}>> = ({ children }) => {
             p="md"
             hiddenBreakpoint="sm"
             hidden={!opened}
-            width={{ sm: 200, lg: 250 }}
+            width={{ sm: 200, lg: 230 }}
           >
             <Menu />
           </Navbar>
