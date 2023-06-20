@@ -22,11 +22,7 @@ export const Table = <TData extends Record<string, any> = {}>(
       enableFullScreenToggle={false}
       mantineTopToolbarProps={{
         sx: {
-          // padding: "0px",
           minHeight: "2.2rem",
-          // div: {
-          //   padding: "0px",
-          // },
         },
       }}
       initialState={{
@@ -35,7 +31,6 @@ export const Table = <TData extends Record<string, any> = {}>(
       }}
       mantineTableBodyCellProps={{
         sx: {
-          // padding: "0.5rem 1rem !important",
           border: "none",
         },
       }}
@@ -51,7 +46,6 @@ export const Table = <TData extends Record<string, any> = {}>(
       }}
       mantineBottomToolbarProps={{
         sx: {
-          // padding: "0 1rem !important",
           minHeight: "2.5rem",
         },
       }}
@@ -96,14 +90,7 @@ export const Table = <TData extends Record<string, any> = {}>(
         placeholder: "Tìm kiếm",
       }}
       renderTopToolbar={({ table }) => (
-        <Flex
-          justify="space-between"
-          // sx={{
-          //   paddingRight: "1rem",
-          //   paddingLeft: "1rem",
-          //   paddingBottom: "1rem",
-          // }}
-        >
+        <Flex justify="space-between">
           <Box></Box>
           <Flex>
             {table.options.enableColumnFilters && (

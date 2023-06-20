@@ -12,6 +12,7 @@ import { DatesProvider } from "@mantine/dates";
 import { Notifications } from "@mantine/notifications";
 import { Layout } from "./components/layout";
 import { ItemList } from "src/pages/items";
+import { PartnerList } from "src/pages/partners";
 
 function App() {
   return (
@@ -43,6 +44,10 @@ function App() {
                   }
                 >
                   <Route index element={<ItemList />} />
+                  <Route path="items" element={<ItemList />} />
+                  <Route>
+                    <Route path="partners" element={<PartnerList />} />
+                  </Route>
                 </Route>
               </Routes>
               <RefineKbar />

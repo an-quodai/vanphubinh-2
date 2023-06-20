@@ -2,17 +2,16 @@ import { Page } from "src/components/page";
 import { MRT_ColumnDef } from "mantine-react-table";
 import { useMemo, useState } from "react";
 import { Table } from "src/components/table";
-// import { NewItemForm } from "src/components/item";
-import { Item } from "src/utils/interface";
 import { HttpError, useList } from "@refinedev/core";
+import { Partner } from "src/utils/interface";
 
-export const ItemList = () => {
+export const PartnerList = () => {
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize: 20,
   });
-  const { data, isLoading, isRefetching } = useList<Item, HttpError>({
-    resource: "items",
+  const { data, isLoading, isRefetching } = useList<Partner, HttpError>({
+    resource: "partners",
     pagination: {
       current: pagination.pageIndex + 1,
       pageSize: pagination.pageSize,
@@ -21,48 +20,30 @@ export const ItemList = () => {
   const items = data?.data ?? [];
   const total = data?.meta?.total;
 
-  const columns = useMemo<MRT_ColumnDef<Item>[]>(
+  const columns = useMemo<MRT_ColumnDef<Partner>[]>(
     () => [
       {
         accessorKey: "name", //access nested data with dot notation
         header: "Tên",
-        size: 300,
       },
       {
-        accessorKey: "uom.name",
-        header: "Đơn vị",
+        accessorKey: "phone",
+        header: "Số điện thoại",
       },
       {
-        accessorKey: "price", //normal accessorKey
-        header: "Giá mua",
+        accessorKey: "email", //normal accessorKey
+        header: "Email",
       },
       {
-        accessorKey: "cost",
-        header: "Giá bán",
-      },
-      {
-        accessorKey: "purchaseUom.name",
-        header: "Đơn vị mua hàng",
+        accessorKey: "address",
+        header: "Địa chỉ",
       },
     ],
     []
   );
-  // const openNewItemModal = () => {
-  //   openModal({
-  //     title: "Hàng hoá mới",
-  //     centered: true,
-  //     children: <NewItemForm />,
-  //   });
-  // };
 
   return (
-    <Page
-      createButtonProps={
-        {
-          // onClick: openNewItemModal,
-        }
-      }
-    >
+    <Page>
       <Table
         columns={columns}
         data={items}
