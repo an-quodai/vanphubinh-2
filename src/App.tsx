@@ -11,9 +11,9 @@ import { MantineProvider } from "@mantine/core";
 import { DatesProvider } from "@mantine/dates";
 import { Notifications } from "@mantine/notifications";
 import { Layout } from "./components/layout";
-import { ItemList } from "src/pages/items";
-import { PartnerList } from "src/pages/partners";
-import { SaleOrderList } from "src/pages/saleOrders";
+import { ItemList } from "src/pages/item";
+import { PartnerList } from "src/pages/partner";
+import { SaleOrderList } from "src/pages/saleOrder";
 
 function App() {
   return (

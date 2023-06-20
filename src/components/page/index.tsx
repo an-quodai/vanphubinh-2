@@ -1,10 +1,9 @@
-import { Stack, Box, Title, Flex, Button, Paper } from "@mantine/core";
-import { Breadcrumb } from "../breadcrumb";
+import { Stack, Box, Title, Flex, Button } from "@mantine/core";
 
 type Props = {
   children: React.ReactNode;
   createButtonProps?: React.ComponentProps<typeof Button>;
-  title: string;
+  title?: string;
 };
 
 export const Page: React.FC<Props> = ({
