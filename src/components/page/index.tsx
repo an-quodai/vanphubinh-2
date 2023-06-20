@@ -4,13 +4,13 @@ import { Breadcrumb } from "../breadcrumb";
 type Props = {
   children: React.ReactNode;
   createButtonProps?: React.ComponentProps<typeof Button>;
-  withPadding?: boolean;
+  title: string;
 };
 
 export const Page: React.FC<Props> = ({
   children,
   createButtonProps,
-  withPadding,
+  title = "Resource",
 }) => {
   return (
     <Stack
@@ -23,14 +23,13 @@ export const Page: React.FC<Props> = ({
       }}
     >
       <Flex justify="space-between">
-        <Title order={2}>Temporaty title</Title>
-        <Button {...createButtonProps}>Tạo hàng hoá</Button>
+        <Title order={2}>{title}</Title>
+        <Button {...createButtonProps}>Tạo {title.toLocaleLowerCase()}</Button>
       </Flex>
       <Box
         sx={{
           flex: "1 1 auto",
           overflow: "hidden",
-          padding: withPadding ? "0 1rem" : "0",
         }}
       >
         {children}

@@ -56,13 +56,7 @@ export const ItemList = () => {
   // };
 
   return (
-    <Page
-      createButtonProps={
-        {
-          // onClick: openNewItemModal,
-        }
-      }
-    >
+    <Page title="Hàng hoá">
       <Table
         columns={columns}
         data={items}

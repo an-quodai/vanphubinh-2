@@ -33,3 +33,18 @@ export interface Partner {
   isCustomer: boolean;
   isSupplier: boolean;
 }
+
+export interface SaleOrderLine {
+  id: number;
+  item: Item;
+  quantity: number;
+  unitPrice: number;
+  discount: number;
+}
+export interface SaleOrder {
+  id: number;
+  customer: Partner;
+  discount: number;
+  status: string;
+  saleOrderLines: SaleOrderLine[];
+}

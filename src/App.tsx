@@ -13,6 +13,7 @@ import { Notifications } from "@mantine/notifications";
 import { Layout } from "./components/layout";
 import { ItemList } from "src/pages/items";
 import { PartnerList } from "src/pages/partners";
+import { SaleOrderList } from "src/pages/saleOrders";
 
 function App() {
   return (
@@ -47,6 +48,9 @@ function App() {
                   <Route path="items" element={<ItemList />} />
                   <Route>
                     <Route path="partners" element={<PartnerList />} />
+                  </Route>
+                  <Route>
+                    <Route path="sale-orders" element={<SaleOrderList />} />
                   </Route>
                 </Route>
               </Routes>

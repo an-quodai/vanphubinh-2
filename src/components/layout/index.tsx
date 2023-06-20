@@ -18,7 +18,7 @@ export const Layout: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   return (
     <div className="layout">
       <AppShell
-        padding="lg"
+        padding="xs"
         styles={{
           root: {
             header: {

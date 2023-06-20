@@ -43,7 +43,7 @@ export const PartnerList = () => {
   );
 
   return (
-    <Page>
+    <Page title="Đối tác">
       <Table
         columns={columns}
         data={items}
