@@ -74,6 +74,9 @@ export const Table = <TData extends Record<string, any> = {}>(
           },
         },
       }}
+      mantineTableHeadProps={{
+        sx: {},
+      }}
       mantineTableProps={{
         sx: {
           border: "none",

@@ -13,19 +13,13 @@ import { Notifications } from "@mantine/notifications";
 import { Layout } from "./components/layout";
 import { ItemList } from "src/pages/item";
 import { PartnerList } from "src/pages/partner";
-import { SaleOrderList } from "src/pages/saleOrder";
+import { SaleOrderList, SaleOrderCreate } from "src/pages/saleOrder";
 
 function App() {
   return (
     <BrowserRouter>
       <RefineKbarProvider>
-        <MantineProvider
-          withGlobalStyles
-          withNormalizeCSS
-          theme={{
-            primaryShade: 7,
-          }}
-        >
+        <MantineProvider withGlobalStyles withNormalizeCSS theme={{}}>
           <Notifications position="top-right" zIndex={2077} />
           <DatesProvider settings={{ locale: "vi" }}>
             <Refine
@@ -49,8 +43,9 @@ function App() {
                   <Route>
                     <Route path="partners" element={<PartnerList />} />
                   </Route>
-                  <Route>
-                    <Route path="sale-orders" element={<SaleOrderList />} />
+                  <Route path="/sale-orders">
+                    <Route index element={<SaleOrderList />} />
+                    <Route path="create" element={<SaleOrderCreate />} />
                   </Route>
                 </Route>
               </Routes>
