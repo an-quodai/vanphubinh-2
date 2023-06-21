@@ -18,6 +18,7 @@ import {
   Container,
   Box,
   Badge,
+  Flex,
 } from "@mantine/core";
 import { IconTrash, IconCopy } from "@tabler/icons-react";
 import { DatePickerInput } from "@mantine/dates";
@@ -26,6 +27,7 @@ import { useCreate, useSelect } from "@refinedev/core";
 import { Item } from "src/utils/interface";
 import { Tabs } from "@mantine/core";
 import { Divider } from "@mantine/core";
+import { useMemo } from "react";
 
 export const SaleOrderCreate = () => {
   const { options, queryResult } = useSelect<Item>({
@@ -138,6 +140,8 @@ export const SaleOrderCreate = () => {
       <td style={{ width: "10%" }}>
         <NumberInput
           variant="unstyled"
+          disabled
+          sx={{ "input": { backgroundColor: "white !important", color: "black !important", opacity: "1 !important"}}}
           value={
             values.saleOrderLines[index].quantity *
             values.saleOrderLines[index].unitPrice
@@ -160,7 +164,7 @@ export const SaleOrderCreate = () => {
           variant="unstyled"
           dropdownType="popover"
           valueFormat="DD/MM/YYYY"
-          placeholder="Chọn ngày giao hàng"
+          placeholder="Ngày giao hàng"
           renderDay={(date) => {
             const day = date.getDate();
             const today = new Date().getDate();
@@ -197,7 +201,14 @@ export const SaleOrderCreate = () => {
       </td>
     </tr>
   ));
-
+  
+  const totalBeforeTax = useMemo(() => {
+    return values.saleOrderLines?.reduce(
+      (total, line) => total + line.quantity * line.unitPrice,
+      0
+    );
+  }, [values.saleOrderLines]);
+  
   return (
     <Page createButtonProps={saveButtonProps}>
       <form>
@@ -350,16 +361,70 @@ export const SaleOrderCreate = () => {
             </Tabs.Panel>
           </Tabs>
         </Paper>
-        <Table>
-          <tbody>
-            <tr>
-              <td style={{ textAlign: "right" }}>
-                <Text fw={700}>Giá trị trước thuế:</Text>
-              </td>
-              <td style={{ width: "10%", textAlign: "right" }}>500.000</td>
-            </tr>
-          </tbody>
-        </Table>
+        <Flex
+          justify="flex-end"
+          align="center"
+          direction="row"
+          wrap="nowrap"
+        >
+          <Text fz="md" fw={700}>Giá trị trước thuế:</Text>
+          <NumberInput
+            variant="unstyled"
+            disabled
+            w={130}
+            sx={{ "input": { backgroundColor: "white !important", color: "black !important", opacity: "1 !important", fontSize: "16px", textAlign: "right"}}}
+            value={totalBeforeTax}
+            parser={(value) => value.replace(/\s?|(,*)/g, "")}
+            formatter={(value) =>
+              !Number.isNaN(parseFloat(value))
+                ? `${value}`.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+                : ""
+            }
+          />
+        </Flex>
+        <Flex
+          justify="flex-end"
+          align="center"
+          direction="row"
+          wrap="nowrap"
+        >
+          <Text fz="md" fw={700}>Thuế:</Text>
+          <NumberInput
+            variant="unstyled"
+            disabled
+            w={130}
+            sx={{ "input": { backgroundColor: "white !important", color: "black !important", opacity: "1 !important", fontSize: "16px", textAlign: "right", }}}
+            value={totalBeforeTax}
+            parser={(value) => value.replace(/\s?|(,*)/g, "")}
+            formatter={(value) =>
+              !Number.isNaN(parseFloat(value))
+                ? `${value}`.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+                : ""
+            }
+          />
+        </Flex>
+        <Flex
+          justify="flex-end"
+          align="center"
+          direction="row"
+          wrap="nowrap"
+        >
+          <Text fz="md" fw={700}>Tổng cộng:</Text>
+          <NumberInput
+            variant="unstyled"
+            disabled
+            w={130}
+            sx={{ "input": { backgroundColor: "white !important", color: "black !important", opacity: "1 !important", fontSize: "16px", textAlign: "right", }}}
+            value={totalBeforeTax}
+            parser={(value) => value.replace(/\s?|(,*)/g, "")}
+            formatter={(value) =>
+              !Number.isNaN(parseFloat(value))
+                ? `${value}`.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+                : ""
+            }
+          />
+        </Flex>
+
       </form>
     </Page>
   );
